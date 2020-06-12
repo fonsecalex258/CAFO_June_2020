@@ -51,6 +51,8 @@ dashboardPage(
   dashboardBody(
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+      
+      
     ),
     tabItems(
       ## background ####
@@ -61,7 +63,7 @@ dashboardPage(
                   title = "Living systematic review of effects of animal production on the health of surrounding communities",
                   fluidRow(column(width = 7, 
                                   br(),                
-                  p("In recent years there have been a growing concern about the harmful effects that animal facilities could have on nearby communities. 
+                                  p("In recent years there have been a growing concern about the harmful effects that animal facilities could have on nearby communities. 
                   Regarding the swine industry, it has been suggested that facilities that confine animals indoors for feeding might represent a health
                   hazard for surrounding communities due to the exposition to odors, emissions and other harmful agents."),
                   
@@ -129,7 +131,7 @@ dashboardPage(
                 box(width = 12,
                     h4("Introduction"),
                     p("The literture about human health impacts of living near production animals is quite limited. After conducting an exhaustive search, our team identified 16 studies consisting of 10 study populations to include in the analysis.
-                    Those 16 studies were conducted in only three countries. The health outcomes were lower and upper respiratory tracts, MRSA, other infectious disease, neurological, 
+                    Those 16 studies were conducted in only three countries. The health outcomes were lower and upper respiratory tracts, antibiotic resistance, other infectious disease, neurological, 
                     psychological, dermatological, otologic, ocular, gastrointestinal, stress and mood, and other non-infectious health outcomes.
                       The health outcomes displayed in the side bar were selected because these were analyzed in more than two papers (see Timeline)."),
                     p("Please click the following check box to visualize the titles, year of publication and origin of the those studies. "),
@@ -164,7 +166,7 @@ dashboardPage(
                     p("Out 532 outcome and exposure relationships extracted from the 16 studies, relationships that include outcomes categorized as lower respiratory tract were the most approached."),
                     p("There was no consistent evidence of an association between exposure (or higher levels of exposure) to animal
 facilities and higher odds of lower respiratory tract outcomes for the prevalence OR effect measure, except
-when the level of odor annoyance was used as the measure of exposure”."),
+when the level of odor annoyance was used as the measure of exposure."),
                     radioGroupButtons(
                       inputId = "low_res_btn", justified = TRUE, label = "",
                       choices = c(`<i class='fa fa-globe'></i> Geographical Distribution` = "sp",
@@ -249,7 +251,11 @@ effects."),
                       ),
                       tags$head(
                         tags$style(type = "text/css",
-                                   HTML("th { text-align: center; }")
+                                   HTML("th { text-align: center; }"
+                    
+                    
+                    
+                                        )
                         )
                       ),
                       column(width = 7,
@@ -287,12 +293,22 @@ effects."),
       ## * conclusion ####
       tabItem(tabName = "low_rsp_conclusion",
               fluidRow(
-                box(width = 12, solidHeader = TRUE, status = "primary", title = "Interpretation about Lower Respiratory Disease",
-                    p("Many studies reported outcomes associated with the lower respiratory tract. The reported effect measures were either regression coefficients (βs) or prevalence ORs  and prevalence ratios. "),
+                  box(width = 12, solidHeader = TRUE, status = "primary", title = "Interpretation about Lower Respiratory Disease",
+                    p("Many studies reported outcomes associated with the lower respiratory tract. The reported effect measures were either regression coefficients (βs) or prevalence ORs  and prevalence ratios."),
                     p("Most of the regression coefficients reported for lower respiratory tract outcomes included a 95% confidence interval (CI), which included effect sizes associated with protective effects, risk effects, and no effect (i.e., the 95% CI included the null value). Three regression coefficient values had negative value beta estimates. The overall risk of bias was considered serious or critical for the studies that provided outcomes measured as regression coefficients."),
                     p("There was no consistent evidence of an association between exposure (or higher levels of exposure) to animal facilities and higher odds of lower respiratory tract outcomes for the prevalence OR effect measure, except when the level of odor annoyance was used as the measure of exposure. The precision of the effect size estimates was low (i.e., the intervals were wide), and the 95% CIs extended across a range that included a protective effect, no effect, and a risk effect. . Mirabelli et al. reported 89 prevalence ratios (PR) and these are reported in Additional file 1, and the same inference applies. Most prevalence ratio intervals included one, and no consistent dose-response effect was observed."),
                 p("Many authors studied ordered levels of exposure (increasing or decreasing) to document a dose-response, which is important for investigation of causation. When the metric for goat exposure was a density indicator (i.e., number of goats within 5 km of the subject’s residence) and the outcome metric was pneumonia, there was evidence of an association between higher goat density and lower respiratory disease. The prevalence OR for the highest goat density (17,191–20,960) was 1.68, which indicated an increased prevalence of disease. Although the precision was moderate, all of the values within the 95% CI were associated with increased prevalence. These apparently inconsistent findings were reported by the same authors in the same study population. One explanation is that different mechanisms lead to the development of pneumonia versus asthma."),
                 p("The study was performed during a Q fever outbreak, and the finding suggested that exposure to goats was strongly associated with Q fever risk. The authors used pneumonia as a potential Q fever-related outcome, because pneumonia was the most frequent diagnosis among the notified Q fever patients in the Netherlands epidemic. The authors also noted that exposure to poultry was associated with increased prevalence odds of pneumonia. This association between goats and pneumonia was likely due to Q fever, rather than particulate or gaseous emissions. The overall risk of bias was serious for all of the studies that reported prevalence ORs as measures of association."),    
+                )
+              )),
+      ## copied for upper 
+      tabItem(tabName = "up_rsp_conclusion",
+              fluidRow(
+                box(width = 12, solidHeader = TRUE, status = "primary", title = "Interpretation about Lower Respiratory Disease",
+                    p("Schinasi et al. presented regression coefficients (β), and the interpretation of these coefficients differed, because some were from logistic and others were from linear models. In some cases, the regression coefficients indicated increased disease at higher levels of exposure, which suggested that exposure, was associated with increased disease or symptoms. In other cases, the regression coefficients for exposure indicated the presence of protective effects. There were consistent associations between subjectively measured exposures (average 12-h odor levels and twice-daily odor levels) and outcomes (i.e., increased odor was associated with increased disease). Large positive effect sizes indicated higher values for measures of upper respiratory tract outcomes in participants who indicated that they were exposed to higher odor levels. For this subgroup, all of the values in the 95% CI were associated with increased prevalence, except for the sore throat outcome."),
+                    p("Four studies used prevalence ORs to measure associations between exposure to animal facilities and upper respiratory tract outcomes. The findings across dose gradient were also inconsistent. Some results indicated that compared with high-level exposures, lower- or medium-level exposures were associated with higher odds of disease."),
+                    p("When the measure of exposure was the level of odor annoyance, a dose-response was present if the outcome was measured subjectively (self-reported symptoms). The association was inconsistent when an objective measure of disease occurrence was assessed (specific IgE to common allergens). Moderate annoyance at odor was associated with the highest specific IgE response relative to “not at all annoyed” by odor. The precision of the result suggested the direction was consistently positive (OR = 1.71, 95% CI 1.02, 2.87). However, compared with “not at all annoyed,” individuals who responded “somewhat annoyed” (OR = 1.11, 95% CI 0.79, 1.57) and “strongly annoyed” (OR = 1.02, 95% CI 0.51, 2.03) had effect sizes more consistent with an interpretation of no effect (close to OR = 1). The precision of these estimates was low; the 95% CIs had values consistent with increased prevalence, no effect on prevalence, and decreased prevalence."),
+                       
                 )
               )),
       

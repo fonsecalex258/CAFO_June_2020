@@ -7,6 +7,7 @@ library(timevis)
 library(tidyverse)
 library(DT)
 library(readxl)
+library(shinyjs)
 
 
 ## read reference from external text file ####
