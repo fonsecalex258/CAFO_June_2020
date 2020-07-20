@@ -67,7 +67,7 @@ dashboardPage(
                   Regarding the swine industry, it has been suggested that facilities that confine animals indoors for feeding might represent a health
                   hazard for surrounding communities due to the exposition to odors, emissions and other harmful agents."),
                   
-                  p("In this sense, we had performed two systematic review summarizing the findings of publications approaching this matter.
+                  p("Two systematic review have summarizing the findings of publications approaching this matter.
                   These previous studies can be consulted by clicking on the following links:"),
                   p("1.", a("First Systematic Review", href = "https://journals.plos.org/plosone/article/authors?id=10.1371/journal.pone.0009530")),
                   p("2.", a("Second Systematic Review (First Update)", href = "https://systematicreviewsjournal.biomedcentral.com/articles/10.1186/s13643-017-0465-z")),
