@@ -205,7 +205,7 @@ effects."),
       tabItem(tabName = "low_rsp_forest",
               fluidRow(
                 box(width = 12, title = "Concentrated Animal Feeding Operations (CAFOs) Data", solidHeader = T, status = "primary",
-                    p("Hello. The reported effect measures were either regression coefficients (βs) or prevalence ORs and prevalence ratios. In the forest plot (left side), 
+                    p("The reported effect measures were either regression coefficients (βs) or prevalence ORs and prevalence ratios. In the forest plot (left side), 
                       each point represents the reported effect measure (e.g. an odds ratio) for a specific exposure-outcome relationship."),
                     p("The gray columns in the forest plot’s left side group the exposures in two categories. The second column from left to right indicates if the exposure evaluated involved direct contact with the individuals or it is surrogated. The first column from left to right groups the exposures according to type of exposure 
                       (i.e distance, gases, odor and aerosols)."),
