@@ -192,15 +192,27 @@ increases the potential for identification of false associations due to random e
   
   ##### only measure of association
   output$expo_var_1 <- renderUI({
-    choices <- forest$mm
+    choices1 <- forest$mm
     #forest %>%
     #filter(mm == selected_state()) %>%
     #pull(mm) %>% unique() %>% sort() 
     selectInput("expo_b",
                 "Effect size (ES) measure method",
-                choices = choices,
+                choices = unique(choices1), 
+                selected = choices1[1])
+                
+  })
+  
+  output$expo_var_2 <- renderUI({
+    choices2 <- forest$Type_Exposure
+    #forest %>%
+    #filter(mm == selected_state()) %>%
+    #pull(mm) %>% unique() %>% sort() 
+    selectInput("expo_c",
+                "Type of Exposure",
+                choices = unique(choices2),
                 multiple = FALSE,
-                selected = choices[1])
+                selected = choices2[1])
   })
   
   ## lower respiratory ####
@@ -466,7 +478,7 @@ increases the potential for identification of false associations due to random e
   
   forest_data <- reactive({
     forest_data <- forest %>% filter(
-      mm == input$expo_b & Categorized.class==selected_class())
+      mm == input$expo_b & Categorized.class==selected_class() & Type_Exposure == input$expo_c)
   })
   
   

@@ -239,6 +239,17 @@ when the level of odor annoyance was used as the measure of exposure”."),
                     hr(),
                     
                     fluidRow(
+                      column(width = 8,h4("How to use the forest plot??"),
+                             HTML('<iframe width="450" height="230" src="https://www.youtube.com/embed/T1-k7VYwsHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                      )  
+                      
+                    ),
+                    
+                    br(),
+                    
+                    hr(),
+                    
+                    fluidRow(
                       #column(width = 4,
                       #      wellPanel(
                       #       uiOutput("measure")
@@ -253,11 +264,14 @@ when the level of odor annoyance was used as the measure of exposure”."),
                       column(width = 4,
                              wellPanel(
                                uiOutput("expo_var_1")
-                             )),  
+                             )),
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_2")
+                             ))
                              #br(),
-                      column(width = 8,
-                        HTML('<iframe width="450" height="230" src="https://www.youtube.com/embed/T1-k7VYwsHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-                      )       
+                            
                       ),
                     
                     hr(),
