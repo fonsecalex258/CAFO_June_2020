@@ -7,13 +7,13 @@ library(timevis)
 library(tidyverse)
 library(DT)
 library(readxl)
-library(shinyjs)
 
 
 ## read reference from external text file ####
 mybib <- readr::read_file("datasets/bib.txt")
 
 ## read files ####
+testtimeline <- readxl::read_xlsx("datasets/testtimeline.xlsx")
 cafo <- readxl::read_xlsx("datasets/cafo.xlsx", sheet = "Treatment-Outcome data")
 cafo2 <- readxl::read_xlsx("datasets/cafo2.xlsx") %>% 
   select(Refid, `Author(s)`, Year, Country, State, City, lng, lat, Title, `Journal Name`)
@@ -36,10 +36,10 @@ cafoo <- cafo %>%
                           ifelse(Refid %in% c(81, 203), "Netherlands", "United States"))) %>% 
   # mutate(`State` = ifelse(Refid %in% c(64, 690, 743, 288), NA,
   #                         ifelse(Refid %in% c(81, 203), NA, "North Carolina"))) %>% 
-  mutate(long = ifelse(Country == "Germany", 13.404954,
-                       ifelse(Country == "Netherlands", 4.899431, -78.644257))) %>% 
-  mutate(lat = ifelse(Country == "Germany", 52.520008,
-                      ifelse(Country == "Netherlands", 52.379189, 35.787743))) %>% 
+  mutate(long = ifelse(Country == "Germany", 10.44768,
+                       ifelse(Country == "Netherlands", 5.2913, -98.5795))) %>% 
+  mutate(lat = ifelse(Country == "Germany", 51.16338,
+                      ifelse(Country == "Netherlands", 52.1326, 39.8283))) %>% 
   distinct(Refid, .keep_all = TRUE) %>% 
   group_by(Country, long, lat) %>% 
   summarise(`Number of Studies` = n())
