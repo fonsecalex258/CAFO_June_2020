@@ -30,6 +30,18 @@ forest123 <- read_excel("datasets/forest123.xlsx")
 forest <- forest %>% mutate(inter = ifelse(is.na(lowerci), yi, paste(forest$yi,"[",forest$lowerci, ",", forest$upperci,"]")), Reference = paste(forest123$study, "(",forest123$id, ")"))
 #forest123 <- forest123 %>% mutate( Reference = paste(forest123$id, ".", forest123$study))
 forest123 <- forest123 %>% mutate( Reference = paste(forest123$study, "(",forest123$id, ")" ))
+
+#### change names
+forest$effect_z <- forest$mm
+forest$effect_z[forest$effect_z == 'OR'] <- 'Odds Ratio (OR)'
+forest$effect_z[forest$effect_z == 'PR'] <- 'Prevalence Ratio (PR)'
+
+forest$t_expo <- forest$Type_Exposure
+forest$t_expo[forest$t_expo == 'surrogate'] <- 'Indirect'
+
+
+
+
 ## map data ####
 cafoo <- cafo %>% 
   mutate(Country = ifelse(Refid %in% c(648, 690, 743, 288), "Germany",

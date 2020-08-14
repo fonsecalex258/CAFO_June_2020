@@ -22,14 +22,14 @@ dat <- data.frame(
 dat$flag1 <- sprintf ('<img src = "https://flagpedia.net/data/flags/w2560/%s.png" height="52" ></img>', dat$country)
 
 #My APA-format theme
-apatheme=theme_bw(base_size = 23)+
+apatheme=theme_bw(base_size = 60)+
   theme(panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         panel.border=element_blank(),
         axis.line=element_line(),
-        strip.text.y.left = element_text(size = 27,angle = 90),
+        strip.text.y.left = element_text(size = 45,angle = 90),
         axis.text.y = element_text(hjust = 15),
-        axis.title.y = element_text(face = "bold", size=30),
+        axis.title.y = element_text(face = "bold", size=40),
         text=element_text(family='Times'),
         legend.position='none')
 
@@ -192,7 +192,7 @@ increases the potential for identification of false associations due to random e
   
   ##### only measure of association
   output$expo_var_1 <- renderUI({
-    choices1 <- forest$mm
+    choices1 <- forest$effect_z
     #forest %>%
     #filter(mm == selected_state()) %>%
     #pull(mm) %>% unique() %>% sort() 
@@ -204,16 +204,19 @@ increases the potential for identification of false associations due to random e
   })
   
   output$expo_var_2 <- renderUI({
-    choices2 <- forest$Type_Exposure
+    choices2 <- forest$t_expo
     #forest %>%
     #filter(mm == selected_state()) %>%
     #pull(mm) %>% unique() %>% sort() 
     selectInput("expo_c",
                 "Type of Exposure",
                 choices = unique(choices2),
-                multiple = FALSE,
+                
                 selected = choices2[1])
   })
+  
+  
+  
   
   ## lower respiratory ####
   ## * intro #####
@@ -478,7 +481,7 @@ increases the potential for identification of false associations due to random e
   
   forest_data <- reactive({
     forest_data <- forest %>% filter(
-      mm == input$expo_b & Categorized.class==selected_class() & Type_Exposure == input$expo_c)
+      effect_z == input$expo_b & Categorized.class==selected_class() &  t_expo == input$expo_c)
   })
   
   
@@ -507,10 +510,10 @@ increases the potential for identification of false associations due to random e
         #geom_jitter(position=position_dodge(3))+
         #coord_cartesian(xlim= if (input$expo_b == "OR") {c(min(forest$lowerci),max(forest$yi))} else {c(-5,5)})+
         #Specify the limits of the x-axis and relabel it to something more meaningful
-        scale_x_continuous( if (input$expo_b == "OR") {name = "Odds ratio (95% confidence interval)"}
+        scale_x_continuous( if (input$expo_b == "Odds Ratio (OR)") {name = "Odds Ratio (95% confidence interval)"}
                             else if (input$expo_b == "beta"){name = "Beta (95% confidence interval)"}
                             else if (input$expo_b == "Mean difference"){name = "Mean difference"}
-                            else if (input$expo_b == "PR"){name = "Prevalence ratio"}
+                            else if (input$expo_b == "Prevalence Ratio (PR)"){name = "Prevalence ratio (95% confidence interval)"}
                             else if (input$expo_b == "OR p value"){name = "Odds ratio p value"}
                             else if (input$expo_b == "beta p value"){name = "Beta p value"}
         )+
@@ -518,18 +521,19 @@ increases the potential for identification of false associations due to random e
         #Give y-axis a meaningful label
         #ylab('Reference')+ 
         #Add a vertical dashed line indicating an effect size of zero, for reference
-        geom_vline(xintercept= if (input$expo_b == "OR"|input$expo_b == "PR"|input$expo_b == "OR p value") {1} else {0}, color='black', linetype='dashed')+
+        geom_vline(xintercept= if (input$expo_b == "Odds Ratio (OR)"|input$expo_b == "Prevalence Ratio (PR)"|input$expo_b == "OR p value") {1} else {0}, color='black', linetype='dashed')+
         #Create sub-plots (i.e., facets) based on levels of setting
         #And allow them to have their own unique axes (so authors don't redundantly repeat)
-        facet_grid(narrow + expoboard~., scales= 'free', space='free', switch="y")+
+        facet_grid(narrow ~., scales= 'free', space='free', switch="y")+
         #annotate("segment", x = UCL_l, xend = if (input$expo_b == "OR") {3.3} else {5.4}, y = study, yend = study, alpha=0.6, arrow = arrow(length = unit(0.2, "inches"),type = "closed"))+
         #geom_segment(aes(x = if(input$expo_b == "OR" & is.na(LCL_l)){lowerci} else {LCL_l-yi}, xend = if (input$expo_b == "OR") {-3.3} else {-5.4}  , y = study , yend = study) ,arrow = arrow(length = unit(0.2, "inches"),type = "closed"))+
         #geom_segment(aes(x = UCL_l , xend = if (input$expo_b == "OR") {3.3} else {5.4}  , y = study , yend = study) ,arrow = arrow(length = unit(0.2, "inches"),type = "closed"))+
         apatheme
     ),
-    width_svg = 11, height_svg = if(input$expo_b == "beta"){28} 
-    else if (input$expo_b == "OR") {25}
-    else if (input$expo_b == "PR") {25} else {10}
+    
+      width_svg = 21, height_svg = if(input$expo_b == "beta"){28} 
+    else if (input$expo_b == "Odds Ratio (OR)") {30}
+    else if (input$expo_b == "Prevalence Ratio (PR)") {30} else {15}
     ,
     #width_svg = 12, height_svg = 12,
     options = list(

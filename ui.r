@@ -8,6 +8,7 @@ dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem("Background", tabName = "start", icon = icon("piggy-bank")),
+      menuItem("Tutorial", tabName = "tutorial", icon = icon("chalkboard-teacher")),
       menuItem("About the Studies", tabName = "eda", icon = icon("chart-bar")),
       # menuItem("Forest Plot", tabName = "forest", icon = icon("tree")),
       menuItem("Health Outcomes", tabName = "outcome", icon = icon("list"),
@@ -114,6 +115,27 @@ dashboardPage(
                   
                 ))
               )),
+      ### Tutorial
+      tabItem(tabName = "tutorial",
+                fluidRow(
+                  box(width = 12, solidHeader = T, status = "primary",
+                      title = "How to navigate through this website?",
+                      p("The reported effect measures were either regression coefficients (βs) or prevalence ORs and prevalence ratios. In the forest plot (left side), 
+                      each point represents the reported effect measure (e.g. an odds ratio) for a specific exposure-outcome relationship."),
+                      p("The gray columns in the forest plot’s left side group the exposures in two categories. The second column from left to right indicates if the exposure evaluated involved direct contact with the individuals or it is surrogated. The first column from left to right groups the exposures according to type of exposure 
+                      (i.e distance, gases, odor and aerosols)."),
+                      p(" The table on the right side shows the risk of bias assessment for the specific point selected previously on the forest plot. For further details about risk of bias assessment displayed in the table on the right side", a("click here", href = "https://www.bristol.ac.uk/population-health-sciences/centres/cresyda/barr/riskofbias/"), 
+                        "Once you click on one a row, a table is going to pop-up to provide more details about the judgment made by the authors for that particular exposure-outcome relationship.  "),
+                      p("The video below  provides more details about the usage of the forest plot and its annexes."),
+                      br(),
+                      hr(),
+                      fluidRow(
+                        column(width = 8,h4("How to use the forest plot??"),
+                               br(),
+                               HTML('<iframe width="450" height="110" src="https://www.youtube.com/embed/T1-k7VYwsHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                        )
+                                            )))),
+      
       ## about the studies ####
       tabItem(tabName = "eda",
               #fluidRow(
@@ -226,29 +248,8 @@ when the level of odor annoyance was used as the measure of exposure”."),
       
       tabItem(tabName = "low_rsp_forest",
               fluidRow(
-                box(width = 12, title = "Concentrated Animal Feeding Operations (CAFOs) Data", solidHeader = T, status = "primary",
-                    p("The reported effect measures were either regression coefficients (βs) or prevalence ORs and prevalence ratios. In the forest plot (left side), 
-                      each point represents the reported effect measure (e.g. an odds ratio) for a specific exposure-outcome relationship."),
-                    p("The gray columns in the forest plot’s left side group the exposures in two categories. The second column from left to right indicates if the exposure evaluated involved direct contact with the individuals or it is surrogated. The first column from left to right groups the exposures according to type of exposure 
-                      (i.e distance, gases, odor and aerosols)."),
-                    p(" The table on the right side shows the risk of bias assessment for the specific point selected previously on the forest plot. For further details about risk of bias assessment displayed in the table on the right side", a("click here", href = "https://www.bristol.ac.uk/population-health-sciences/centres/cresyda/barr/riskofbias/"), 
-                      "Once you click on one a row, a table is going to pop-up to provide more details about the judgment made by the authors for that particular exposure-outcome relationship.  "),
-                    p("The video below  provides more details about the usage of the forest plot and its annexes."),
-                    br(),
-                    
-                    hr(),
-                    
-                    fluidRow(
-                      column(width = 8,h4("How to use the forest plot??"),
-                             HTML('<iframe width="450" height="230" src="https://www.youtube.com/embed/T1-k7VYwsHg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-                      )  
-                      
-                    ),
-                    
-                    br(),
-                    
-                    hr(),
-                    
+                box(width = 12, solidHeader = T, status = "primary",
+                    title = "Forest Plot",
                     fluidRow(
                       #column(width = 4,
                       #      wellPanel(
@@ -270,16 +271,16 @@ when the level of odor annoyance was used as the measure of exposure”."),
                              wellPanel(
                                uiOutput("expo_var_2")
                              ))
-                             #br(),
-                            
-                      ),
+                      #br(),
+                      
+                    ),
                     
                     hr(),
                     fluidRow(
                       column(width = 5,
                              h4("Select a point: "),
                              #actionButton("reset", label = "Reset selection"),
-                             ggiraph::girafeOutput("plot"),
+                             div(ggiraph::girafeOutput("plot"),style = "width: 100%"),
                              #plotOutput("gg_forestp"),
                              #plotOutput("myplot"),
                              #DT::dataTableOutput("low_rsp_dt")#,
@@ -287,8 +288,9 @@ when the level of odor annoyance was used as the measure of exposure”."),
                       ),
                       tags$head(
                         tags$style(type = "text/css",
-                                   HTML("th { text-align: center; }")
-                        )
+                                   HTML("th { text-align: center}")
+                        ),
+                        br(),
                       ),
                       column(width = 7,
                              #selectInput("Measure", "Mesure:", 
@@ -302,11 +304,13 @@ when the level of odor annoyance was used as the measure of exposure”."),
                              
                              #DT::dataTableOutput("my_table")
                       )
+                    )                    
                     )
-                )
+                    
+                    
+                
               )
-              
-              
+                      
               
       ),    
       
