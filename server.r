@@ -22,15 +22,15 @@ dat <- data.frame(
 dat$flag1 <- sprintf ('<img src = "https://flagpedia.net/data/flags/w2560/%s.png" height="52" ></img>', dat$country)
 
 #My APA-format theme
-apatheme=theme_bw(base_size = 60)+
+apatheme=theme_bw(base_size = 23)+
   theme(panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         panel.border=element_blank(),
         axis.line=element_line(),
-        strip.text.y.left = element_text(size = 45,angle = 90),
-        axis.text.y = element_text(hjust = 15),
-        axis.title.y = element_text(face = "bold", size=40),
-        text=element_text(family='Times'),
+        strip.text.y.left = element_text(size = 27,angle = 90),
+        axis.text.y = element_text(hjust = 23),
+        axis.title.y = element_text(face = "bold", size=25),
+        text=element_text(family='Times', size=29),
         legend.position='none')
 
 bg.picker <- function(z){
@@ -53,9 +53,9 @@ shinyServer(function(input, output){
   #source("reactive.R", local = TRUE)
   #source("forestROBPlot.R",  local = TRUE)
   #source("forestROBPlotExperiment.R", local = TRUE)
-#  observeEvent(input$chk, {
-#    if (input$chk) hide('mytable1234') else show('mytable1234')
-#  })
+  #  observeEvent(input$chk, {
+  #    if (input$chk) hide('mytable1234') else show('mytable1234')
+  #  })
   
   
   ## descriptive plots ####
@@ -70,7 +70,7 @@ shinyServer(function(input, output){
 numerous correlated exposures. This approach increases
 the potential to discover important associations and also
 increases the potential for identification of false associations due to random error (increased type 1 error)."),
-      "tabl" = p("Perro")
+      "tabl" = p("The following list contains the titles of the articles included in this review.")
     )
   })
   ## * switch plot ####
@@ -101,30 +101,32 @@ increases the potential for identification of false associations due to random e
       addMarkers(lng = cafoo$long, lat = cafoo$lat,
                  #radius = log(cafoo$`Number of Studies`)*8,
                  popup = ifelse(cafoo$Country=="United States", paste("Country:",cafoo$Country,"<br>",
-                                                                "<b><a href='https://pubmed.ncbi.nlm.nih.gov/23111006/'>Wing et al. 2013</a></b>","<br>",
-                                                                "<b><a href='https://pubmed.ncbi.nlm.nih.gov/7620910/'>Schiffman et al. 1995</a></b>","<br>",
-                                                                "<b><a href='https://link.springer.com/article/10.1007/s10745-005-1653-3'>Bullers 2005</a></b>","<br>",
-                                                                "<b><a href='https://pubmed.ncbi.nlm.nih.gov/21228696/'>Schinasi et al. 2011</a></b>","<br>",
-                                                                "<b><a href='https://pubmed.ncbi.nlm.nih.gov/19890165/'>Horton et al. 2009</a></b>","<br>",
-                                                                "<b><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4517575/'>Mirabelli et al. 2006</a></b>","<br>",
-                                                                "<b><a href='https://pubmed.ncbi.nlm.nih.gov/15866765/'>Schiffman et al. 2005</a></b>","<br>",
-                                                                "<b><a href='https://pubmed.ncbi.nlm.nih.gov/16075904/'>Avery et al. 2004</a></b>","<br>",
-                                                                "<b><a href='https://pubmed.ncbi.nlm.nih.gov/24958086/'>Schinasi et al. 2014</a></b>","<br>"
-                                                                ), ifelse(cafoo$Country=="Germany", paste("Country:",cafoo$Country,"<br>","<b><a href='https://pubmed.ncbi.nlm.nih.gov/21864103/'>Schulze et al. 2011</a></b>","<br>",
-                                                                                                          "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17435437/'>Radon et al. 2007</a></b>","<br>",
-                                                                                                          "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17039438/'>Hoopmann et al. 2006</a></b>","<br>",
-                                                                                                          "<b><a href='https://pubmed.ncbi.nlm.nih.gov/16379061/'>Radon et al. 2005</a></b>","<br>"
-                                                                                                          ),
-                                                                                                          paste("Country:",cafoo$Country,"<br>",
-                                                                                                                "<b><a href='https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0038843'>Smit et al. 2012</a></b>","<br>",
-                                                                                                                "<b><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3810935/'>Feingold et al. 2012</a></b>","<br>",
-                                                                                                                "<b><a href='https://oem.bmj.com/content/71/2/134.long'>Smit et al. 2014</a></b>","<br>"
-                                                                          ) )))
-      
-      
-      
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/23111006/'>Wing et al. 2013</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/7620910/'>Schiffman et al. 1995</a></b>","<br>",
+                                                                      "<b><a href='https://link.springer.com/article/10.1007/s10745-005-1653-3'>Bullers 2005</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/21228696/'>Schinasi et al. 2011</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/19890165/'>Horton et al. 2009</a></b>","<br>",
+                                                                      "<b><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4517575/'>Mirabelli et al. 2006</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/15866765/'>Schiffman et al. 2005</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/16075904/'>Avery et al. 2004</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/24958086/'>Schinasi et al. 2014</a></b>","<br>"
+                 ), ifelse(cafoo$Country=="Germany", paste("Country:",cafoo$Country,"<br>","<b><a href='https://pubmed.ncbi.nlm.nih.gov/21864103/'>Schulze et al. 2011</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17435437/'>Radon et al. 2007</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17039438/'>Hoopmann et al. 2006</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/16379061/'>Radon et al. 2005</a></b>","<br>"
+                 ),
+                 paste("Country:",cafoo$Country,"<br>",
+                       "<b><a href='https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0038843'>Smit et al. 2012</a></b>","<br>",
+                       "<b><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3810935/'>Feingold et al. 2012</a></b>","<br>",
+                       "<b><a href='https://oem.bmj.com/content/71/2/134.long'>Smit et al. 2014</a></b>","<br>"
+                 ) )))
+    
+    
+    
     
   })
+  
+  #####
   output$geobar <- renderPlotly({
     gg <- cafo2 %>% distinct() %>%
       group_by(Country) %>% summarise(Count = n()) %>% 
@@ -171,7 +173,7 @@ increases the potential for identification of false associations due to random e
     #ggplotly(gg, tooltip = c('Broad Outcome Category', 'count')) %>% config(displayModeBar = T)
     
     
-    })
+  })
   
   ## forest fitlers ####
   selected_class <- reactive({
@@ -197,10 +199,10 @@ increases the potential for identification of false associations due to random e
     #filter(mm == selected_state()) %>%
     #pull(mm) %>% unique() %>% sort() 
     selectInput("expo_b",
-                "Effect size (ES) measure method",
+                "Effect size",
                 choices = unique(choices1), 
                 selected = choices1[1])
-                
+    
   })
   
   output$expo_var_2 <- renderUI({
@@ -236,7 +238,7 @@ increases the potential for identification of false associations due to random e
       input$up_res_btn,
       "sp" = p("Most articles related to upper respiratory disease were published in United States, Netherlands and Germany."),
       "ts" = p("This timeline shows the date of publication of references in which outcome related to upper respiratory tract were studied. This category was analyzed by 6 out 16 relevant references included."),
-      "coef" = p("The following table shows all the outcomes that were categorized as upper respiratory tract. Allergic rhinitis and nasal irritation were the most common outcomes grouped in this category.")
+      "coef" = p("The following table shows all the outcomes that were categorized as upper respiratory tract. Allergic rhinitis and nasal irritation were the most common variables grouped in this category.")
     )
   })
   
@@ -244,9 +246,29 @@ increases the potential for identification of false associations due to random e
   output$ar_res_intro_text <- renderUI({
     switch(
       input$ar_res_btn,
-      "sp" = p("Most articles related to upper respiratory disease were published in United States, Netherlands and Germany."),
-      "ts" = p("This timeline shows the date of publication of references in which outcome related to upper respiratory tract were studied. This category was analyzed by 6 out 16 relevant references included."),
-      "coef" = p("The following table shows all the outcomes that were categorized as upper respiratory tract. Allergic rhinitis and nasal irritation were the most common outcomes grouped in this category.")
+      "sp" = p("Most articles related to Antimicrobial resistance were published in United States and Netherlands"),
+      "ts" = p("This timeline shows the date of publication of references in which outcome related to Antimicrobial resistance were studied. This category was analyzed by 2 out 16 relevant references included."),
+      "coef" = p("The following table shows all the outcomes that were categorized as Antimicrobial resistance outcomes.")
+    )
+  })
+  
+  #####copying for GI
+  
+  output$gi_res_intro_text <- renderUI({
+    switch(
+      input$gi_res_btn,
+      "sp" = p("Articles related to Gastrointestinal diseases were published only in United States."),
+      "ts" = p("This timeline shows the date of publication of references in which outcome related to gastrointestinal tract were studied. This category was analyzed by 2 out 16 relevant references included."),
+      "coef" = p("The following table shows all the outcomes that were categorized as gastrointestinal tract. Diarhea, nausea and poor appetite were the most common outcomes grouped in this category.")
+    )
+  })
+  
+  output$Neur_res_intro_text <- renderUI({
+    switch(
+      input$Neur_res_btn,
+      "sp" = p("Articles related to Neurologic diseases were published only in United States."),
+      "ts" = p("This timeline shows the date of publication of references in which outcome related to Neurologic diseases were studied. This category was analyzed by 3 out 16 relevant references included."),
+      "coef" = p("The following table shows all the outcomes that were categorized as Neurologic diseases. Headache and dizziness related conditions were the most common outcomes grouped in this category.")
     )
   })
   
@@ -290,42 +312,161 @@ increases the potential for identification of false associations due to random e
     )
   })
   
+  #######copying for GI
+  
+  output$gi_res_intro_plot <- renderUI({
+    switch(
+      input$gi_res_btn,
+      "sp" = fluidRow(
+        column(width = 6, leafletOutput("map_gi_res") %>% withSpinner()) ,
+        column(width = 6, plotlyOutput("geobar_gi_res") %>% withSpinner())),
+      "ts" = timevisOutput("timeline_gi_res"),
+      #"coef" = plotlyOutput("measure_all_low_res") %>% withSpinner()
+      "coef" = dataTableOutput("measure_all_gi_res") %>% withSpinner()
+    )
+  })
+  
+  output$Neur_res_intro_plot <- renderUI({
+    switch(
+      input$Neur_res_btn,
+      "sp" = fluidRow(
+        column(width = 6, leafletOutput("map_Neur_res") %>% withSpinner()),
+        column(width = 6, plotlyOutput("geobar_Neur_res") %>% withSpinner())),
+      "ts" = timevisOutput("timeline_Neur_res"),
+      #"coef" = plotlyOutput("measure_all_low_res") %>% withSpinner()
+      "coef" = dataTableOutput("measure_all_Neur_res") %>% withSpinner()
+    )
+  })
+  
   ## ** geographic distribution ####
   output$map_low_res <- renderLeaflet({
-    leaflet(cafoo) %>%
+    leaflet(cafoo) %>% 
       addProviderTiles(providers$Stamen.TonerLite,
-                       options = providerTileOptions(noWrap = TRUE)) %>%
-      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map
-      addCircleMarkers(lng = cafoo$long, lat = cafoo$lat,
-                       radius = log(cafoo$`Number of Studies`)*8,
-                       popup = ~paste("Country:", cafoo$Country, "<br>",
-                                      "Number of Studies:", cafoo$`Number of Studies`))
+                       options = providerTileOptions(noWrap = TRUE)) %>%  
+      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map 
+      addMarkers(lng = cafoo$long, lat = cafoo$lat,
+                 #radius = log(cafoo$`Number of Studies`)*8,
+                 popup = ifelse(cafoo$Country=="United States", paste("Country:",cafoo$Country,"<br>",
+                                                                      
+                                                                      
+                                                                      
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/21228696/'>Schinasi et al. 2011</a></b>","<br>",
+                                                                      
+                                                                      "<b><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4517575/'>Mirabelli et al. 2006</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/15866765/'>Schiffman et al. 2005</a></b>","<br>"
+                                                                      
+                                                                      
+                 ), ifelse(cafoo$Country=="Germany", paste("Country:",cafoo$Country,"<br>","<b><a href='https://pubmed.ncbi.nlm.nih.gov/21864103/'>Schulze et al. 2011</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17435437/'>Radon et al. 2007</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17039438/'>Hoopmann et al. 2006</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/16379061/'>Radon et al. 2005</a></b>","<br>"
+                 ),
+                 paste("Country:",cafoo$Country,"<br>",
+                       "<b><a href='https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0038843'>Smit et al. 2012</a></b>","<br>",
+                       
+                       "<b><a href='https://oem.bmj.com/content/71/2/134.long'>Smit et al. 2014</a></b>","<br>"
+                 ) )))
   })
   
   #####copying for upper
   
   output$map_up_res <- renderLeaflet({
-    leaflet(cafoo) %>%
+    leaflet(cafoo) %>% 
       addProviderTiles(providers$Stamen.TonerLite,
-                       options = providerTileOptions(noWrap = TRUE)) %>%
-      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map
-      addCircleMarkers(lng = cafoo$long, lat = cafoo$lat,
-                       radius = log(cafoo$`Number of Studies`)*8,
-                       popup = ~paste("Country:", cafoo$Country, "<br>",
-                                      "Number of Studies:", cafoo$`Number of Studies`))
+                       options = providerTileOptions(noWrap = TRUE)) %>%  
+      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map 
+      addMarkers(lng = cafoo$long, lat = cafoo$lat,
+                 #radius = log(cafoo$`Number of Studies`)*8,
+                 popup = ifelse(cafoo$Country=="United States", paste("Country:",cafoo$Country,"<br>",
+                                                                      
+                                                                      
+                                                                      
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/21228696/'>Schinasi et al. 2011</a></b>","<br>",
+                                                                      
+                                                                      
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/15866765/'>Schiffman et al. 2005</a></b>","<br>"
+                                                                      
+                                                                      
+                 ), ifelse(cafoo$Country=="Germany", paste("Country:",cafoo$Country,"<br>","<b><a href='https://pubmed.ncbi.nlm.nih.gov/21864103/'>Schulze et al. 2011</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17435437/'>Radon et al. 2007</a></b>","<br>",
+                                                           "<b><a href='https://pubmed.ncbi.nlm.nih.gov/17039438/'>Hoopmann et al. 2006</a></b>","<br>"
+                 ),
+                 paste("Country:",cafoo$Country,"<br>",
+                       
+                       
+                       "<b><a href='https://oem.bmj.com/content/71/2/134.long'>Smit et al. 2014</a></b>","<br>"
+                 ) )))
   })
   
   #####copying for AMR
   
   output$map_ar_res <- renderLeaflet({
-    leaflet(cafoo) %>%
+    leaflet(cafoo) %>% 
       addProviderTiles(providers$Stamen.TonerLite,
-                       options = providerTileOptions(noWrap = TRUE)) %>%
-      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map
-      addCircleMarkers(lng = cafoo$long, lat = cafoo$lat,
-                       radius = log(cafoo$`Number of Studies`)*8,
-                       popup = ~paste("Country:", cafoo$Country, "<br>",
-                                      "Number of Studies:", cafoo$`Number of Studies`))
+                       options = providerTileOptions(noWrap = TRUE)) %>%  
+      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map 
+      addMarkers(lng = cafoo$long, lat = cafoo$lat,
+                 #radius = log(cafoo$`Number of Studies`)*8,
+                 popup = ifelse(cafoo$Country=="United States", paste("Country:",cafoo$Country,"<br>",
+                                                                      
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/24958086/'>Schinasi et al. 2014</a></b>","<br>"
+                                                                      
+                 ), ifelse(cafoo$Country=="Germany", paste("Country:",cafoo$Country,"<br>",
+                                                           "No Records"
+                                                                            ),
+                 paste("Country:",cafoo$Country,"<br>",
+                       
+                       
+                       "<b><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3810935/'>Feingold et al. 2012</a></b>","<br>"
+                 ) )))
+  })
+  
+  ####copying for GI
+  
+  output$map_gi_res <- renderLeaflet({
+    leaflet(cafoo) %>% 
+      addProviderTiles(providers$Stamen.TonerLite,
+                       options = providerTileOptions(noWrap = TRUE)) %>%  
+      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map 
+      addMarkers(lng = cafoo$long, lat = cafoo$lat,
+                 #radius = log(cafoo$`Number of Studies`)*8,
+                 popup = ifelse(cafoo$Country=="United States", paste("Country:",cafoo$Country,"<br>",
+                                                                      
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/15866765/'>Schiffman et al. 2005</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/21228696/'>Schinasi et al. 2011</a></b>","<br>"
+                                                                      
+                 ), ifelse(cafoo$Country=="Germany", paste("Country:",cafoo$Country,"<br>",
+                                                           "No Records"
+                 ),
+                 paste("Country:",cafoo$Country,"<br>",
+                       
+                       
+                       "No Records"
+                 ) )))
+  })
+  
+  ####copying for Neurologic
+  
+  output$map_Neur_res <- renderLeaflet({
+    leaflet(cafoo) %>% 
+      addProviderTiles(providers$Stamen.TonerLite,
+                       options = providerTileOptions(noWrap = TRUE)) %>%  
+      setView(-40.679728, 34.738366, zoom = 2) %>%  ## Set/fix the view of the map 
+      addMarkers(lng = cafoo$long, lat = cafoo$lat,
+                 #radius = log(cafoo$`Number of Studies`)*8,
+                 popup = ifelse(cafoo$Country=="United States", paste("Country:",cafoo$Country,"<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/19890165/'>Horton et al. 2009</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/15866765/'>Schiffman et al. 2005</a></b>","<br>",
+                                                                      "<b><a href='https://pubmed.ncbi.nlm.nih.gov/21228696/'>Schinasi et al. 2011</a></b>","<br>"
+                                                                      
+                 ), ifelse(cafoo$Country=="Germany", paste("Country:",cafoo$Country,"<br>",
+                                                           "No Records"
+                 ),
+                 paste("Country:",cafoo$Country,"<br>",
+                       
+                       
+                       "No Records"
+                 ) )))
   })
   
   output$geobar_low_res <- renderPlotly({
@@ -361,26 +502,53 @@ increases the potential for identification of false associations due to random e
       scale_fill_brewer(palette = "Set2")
     ggplotly(gg, tooltip = c("x", "y")) %>% layout(showlegend = FALSE)
   })
+  
+  ########copying for GI
+  
+  output$geobar_gi_res <- renderPlotly({
+    gg <- cafo2 %>% filter(Refid %in% selected_id()) %>% distinct() %>%
+      group_by(Country) %>% summarise(Count = n()) %>%
+      mutate(Country = forcats::fct_reorder(factor(Country), Count)) %>%
+      ggplot(aes(x = Country, y = Count)) +
+      geom_bar(aes(fill = Country), stat = "identity") +
+      scale_fill_brewer(palette = "Set2")
+    ggplotly(gg, tooltip = c("x", "y")) %>% layout(showlegend = FALSE)
+  })
+  
+  ########copying for Neurologic
+  
+  output$geobar_Neur_res <- renderPlotly({
+    gg <- cafo2 %>% filter(Refid %in% selected_id()) %>% distinct() %>%
+      group_by(Country) %>% summarise(Count = n()) %>%
+      mutate(Country = forcats::fct_reorder(factor(Country), Count)) %>%
+      ggplot(aes(x = Country, y = Count)) +
+      geom_bar(aes(fill = Country), stat = "identity") +
+      scale_fill_brewer(palette = "Set2")
+    ggplotly(gg, tooltip = c("x", "y")) %>% layout(showlegend = FALSE)
+  })
   ## ** timeline ####
   output$timeline_low_res <- renderTimevis({
     ## Only select authors and year information columns
     timedata <- dataset %>% 
       filter(Categorized.class == selected_class()) %>% 
-      select(paperInfo, paperYear) %>% distinct() %>%
+      select(Refid, paperInfo, paperYear) %>% distinct() %>%
       ## Extract only author names from paperInfo column
       ## Extract string comes before the period
       mutate(Author = sub("\\..*", "", paperInfo))
     # timedata$paperYear[8] <- 2006  Fixed missing data on the original dataset
     timedata2 <- timedata %>% select(paperYear, Author)
-    ## Insert into a dataframe
-    datt <- data.frame(
+    ###
+    timedata2 <- testtimeline %>% filter (ids %in% timedata$Refid)%>% 
+      select(weblink, year, ids) %>% distinct() 
+    ## Insert into a dataframe 
+    datt2 <- data.frame(
       ## make it reactive
-      id = 1:nrow(timedata2),
-      content = timedata2$Author,
-      start = timedata2$paperYear,
+      id = 1:nrow(timedata2),   
+      content = timedata2$weblink,
+      start = timedata2$year,
       end = NA
     )
-    timevis(datt)
+    timevis(datt2, showZoom = F)
   })
   
   #######copying for up
@@ -389,21 +557,24 @@ increases the potential for identification of false associations due to random e
     ## Only select authors and year information columns
     timedata <- dataset %>% 
       filter(Categorized.class == selected_class()) %>% 
-      select(paperInfo, paperYear) %>% distinct() %>%
+      select(Refid, paperInfo, paperYear) %>% distinct() %>%
       ## Extract only author names from paperInfo column
       ## Extract string comes before the period
       mutate(Author = sub("\\..*", "", paperInfo))
     # timedata$paperYear[8] <- 2006  Fixed missing data on the original dataset
     timedata2 <- timedata %>% select(paperYear, Author)
-    ## Insert into a dataframe
-    datt <- data.frame(
+    ###
+    timedata2 <- testtimeline %>% filter (ids %in% timedata$Refid)%>% 
+      select(weblink, year, ids) %>% distinct() 
+    ## Insert into a dataframe 
+    datt2 <- data.frame(
       ## make it reactive
-      id = 1:nrow(timedata2),
-      content = timedata2$Author,
-      start = timedata2$paperYear,
+      id = 1:nrow(timedata2),   
+      content = timedata2$weblink,
+      start = timedata2$year,
       end = NA
     )
-    timevis(datt)
+    timevis(datt2, showZoom = F)
   })
   
   #######copying for AMR
@@ -412,26 +583,88 @@ increases the potential for identification of false associations due to random e
     ## Only select authors and year information columns
     timedata <- dataset %>% 
       filter(Categorized.class == selected_class()) %>% 
-      select(paperInfo, paperYear) %>% distinct() %>%
+      select(Refid, paperInfo, paperYear) %>% distinct() %>%
       ## Extract only author names from paperInfo column
       ## Extract string comes before the period
       mutate(Author = sub("\\..*", "", paperInfo))
     # timedata$paperYear[8] <- 2006  Fixed missing data on the original dataset
     timedata2 <- timedata %>% select(paperYear, Author)
-    ## Insert into a dataframe
-    datt <- data.frame(
+    ###
+    timedata2 <- testtimeline %>% filter (ids %in% timedata$Refid)%>% 
+      select(weblink, year, ids) %>% distinct() 
+    ## Insert into a dataframe 
+    datt2 <- data.frame(
       ## make it reactive
-      id = 1:nrow(timedata2),
-      content = timedata2$Author,
-      start = timedata2$paperYear,
+      id = 1:nrow(timedata2),   
+      content = timedata2$weblink,
+      start = timedata2$year,
       end = NA
     )
-    timevis(datt)
+    timevis(datt2, showZoom = F)
   })
+  
+  ##### copying for GI
+  
+  output$timeline_gi_res <- renderTimevis({
+    ## Only select authors and year information columns
+    timedata <- dataset %>% 
+      filter(Categorized.class == selected_class()) %>% 
+      select(Refid, paperInfo, paperYear) %>% distinct() %>%
+      ## Extract only author names from paperInfo column
+      ## Extract string comes before the period
+      mutate(Author = sub("\\..*", "", paperInfo))
+    # timedata$paperYear[8] <- 2006  Fixed missing data on the original dataset
+    timedata2 <- timedata %>% select(paperYear, Author)
+    ###
+    timedata2 <- testtimeline %>% filter (ids %in% timedata$Refid)%>% 
+      select(weblink, year, ids) %>% distinct() 
+    ## Insert into a dataframe 
+    datt2 <- data.frame(
+      ## make it reactive
+      id = 1:nrow(timedata2),   
+      content = timedata2$weblink,
+      start = timedata2$year,
+      end = NA
+    )
+    timevis(datt2, showZoom = F)
+  })
+  
+  #######copying for Neurologic
+  
+  output$timeline_Neur_res <- renderTimevis({
+    ## Only select authors and year information columns
+    timedata <- dataset %>% 
+      filter(Categorized.class == selected_class()) %>% 
+      select(Refid, paperInfo, paperYear) %>% distinct() %>%
+      ## Extract only author names from paperInfo column
+      ## Extract string comes before the period
+      mutate(Author = sub("\\..*", "", paperInfo))
+    # timedata$paperYear[8] <- 2006  Fixed missing data on the original dataset
+    timedata2 <- timedata %>% select(paperYear, Author)
+    ###
+    timedata2 <- testtimeline %>% filter (ids %in% timedata$Refid)%>% 
+      select(weblink, year, ids) %>% distinct() 
+    ## Insert into a dataframe 
+    datt2 <- data.frame(
+      ## make it reactive
+      id = 1:nrow(timedata2),   
+      content = timedata2$weblink,
+      start = timedata2$year,
+      end = NA
+    )
+    timevis(datt2, showZoom = F)
+  })
+  
+  
+  ##### table outcomes Lower R
   
   output$measure_all_low_res <- DT::renderDataTable({
     sat <- dataset %>% filter(Categorized.class==selected_class())%>%
       group_by(Categorized.class, Outcome.variable) %>%summarise(Frequency = length(Outcome.variable))
+    names(sat)[1] <- "Outcome category"
+    names(sat)[2] <- "Outcome variable analyzed"
+    names(sat)[3] <- "Number of times the variable was analyzed"
+    
     DT::datatable(sat, rownames = FALSE,escape = FALSE, options = list(ordering=F, bFilter=T, pageLength = 50))
     #subset(cafoo, cafoo$`Country` == "Germany")
     #broadfilter <- subset(dataset, Categorized.class == selected_class())
@@ -442,7 +675,11 @@ increases the potential for identification of false associations due to random e
   output$measure_all_up_res <- DT::renderDataTable({
     sat <- dataset %>% filter(Categorized.class==selected_class())%>%
       group_by(Categorized.class, Outcome.variable) %>%summarise(Frequency = length(Outcome.variable))
-    DT::datatable(sat, rownames = FALSE,escape = FALSE, options = list(ordering=F, bFilter=F, pageLength = 50))
+    names(sat)[1] <- "Outcome category"
+    names(sat)[2] <- "Outcome variable analyzed"
+    names(sat)[3] <- "Number of times the variable was analyzed"
+    
+    DT::datatable(sat, rownames = FALSE,escape = FALSE, options = list(ordering=F, bFilter=T, pageLength = 50))
     #subset(cafoo, cafoo$`Country` == "Germany")
     #broadfilter <- subset(dataset, Categorized.class == selected_class())
   })
@@ -452,7 +689,41 @@ increases the potential for identification of false associations due to random e
   output$measure_all_ar_res <- DT::renderDataTable({
     sat <- dataset %>% filter(Categorized.class==selected_class())%>%
       group_by(Categorized.class, Outcome.variable) %>%summarise(Frequency = length(Outcome.variable))
-    DT::datatable(sat, rownames = FALSE,escape = FALSE, options = list(ordering=F, bFilter=F, pageLength = 50))
+    names(sat)[1] <- "Outcome category"
+    names(sat)[2] <- "Outcome variable analyzed"
+    names(sat)[3] <- "Number of times the variable was analyzed"
+    
+    DT::datatable(sat, rownames = FALSE,escape = FALSE, options = list(ordering=F, bFilter=T, pageLength = 50))
+    #subset(cafoo, cafoo$`Country` == "Germany")
+    #broadfilter <- subset(dataset, Categorized.class == selected_class())
+  })
+  
+  #######copying for GI
+  
+  output$measure_all_gi_res <- DT::renderDataTable({
+    sat <- dataset %>% filter(Categorized.class==selected_class())%>%
+      group_by(Categorized.class, Outcome.variable) %>%summarise(Frequency = length(Outcome.variable))
+    
+    names(sat)[1] <- "Outcome category"
+    names(sat)[2] <- "Outcome variable analyzed"
+    names(sat)[3] <- "Number of times the variable was analyzed"
+    
+    DT::datatable(sat, rownames = FALSE,escape = FALSE, options = list(ordering=F, bFilter=T, pageLength = 50))
+    #subset(cafoo, cafoo$`Country` == "Germany")
+    #broadfilter <- subset(dataset, Categorized.class == selected_class())
+  })
+  
+  #######copying for Neurologic
+  
+  output$measure_all_Neur_res <- DT::renderDataTable({
+    sat <- dataset %>% filter(Categorized.class==selected_class())%>%
+      group_by(Categorized.class, Outcome.variable) %>%summarise(Frequency = length(Outcome.variable))
+    
+    names(sat)[1] <- "Outcome category"
+    names(sat)[2] <- "Outcome variable analyzed"
+    names(sat)[3] <- "Number of times the variable was analyzed"
+    
+    DT::datatable(sat, rownames = FALSE,escape = FALSE, options = list(ordering=F, bFilter=T, pageLength = 50))
     #subset(cafoo, cafoo$`Country` == "Germany")
     #broadfilter <- subset(dataset, Categorized.class == selected_class())
   })
@@ -480,6 +751,8 @@ increases the potential for identification of false associations due to random e
   })
   
   forest_data <- reactive({
+    
+    
     forest_data <- forest %>% filter(
       effect_z == input$expo_b & Categorized.class==selected_class() &  t_expo == input$expo_c)
   })
@@ -487,13 +760,22 @@ increases the potential for identification of false associations due to random e
   
   #output$low_rsp_dt <- DT::renderDataTable({
   #  forest_data()
-    #newdatas <- forest_data()[c(1,2)]
+  #newdatas <- forest_data()[c(1,2)]
   #})
   
-  
+  output$out1 <- renderInfoBox({
+    infoBox("How to use a forest plot",  
+            a("Click here to go to the tutorial", onclick = "openTab('tutorial')", href="#", style = "font-size: 90%;"),
+            icon = icon("chalkboard-teacher"), color = "blue"
+    )
+  }) 
   
   
   output$plot <- renderGirafe({
+    validate(
+      need(forest_data()$id != "", "There are no records for the selected combination of effect size (ES) and Type of exposure, please make another selection.")
+    )
+    
     x <- girafe(code = print(
       
       
@@ -511,17 +793,17 @@ increases the potential for identification of false associations due to random e
         #coord_cartesian(xlim= if (input$expo_b == "OR") {c(min(forest$lowerci),max(forest$yi))} else {c(-5,5)})+
         #Specify the limits of the x-axis and relabel it to something more meaningful
         scale_x_continuous( if (input$expo_b == "Odds Ratio (OR)") {name = "Odds Ratio (95% confidence interval)"}
-                            else if (input$expo_b == "beta"){name = "Beta (95% confidence interval)"}
+                            else if (input$expo_b == "beta coefficient of the variable"){name = "beta coefficient (95% confidence interval)"}
                             else if (input$expo_b == "Mean difference"){name = "Mean difference"}
                             else if (input$expo_b == "Prevalence Ratio (PR)"){name = "Prevalence ratio (95% confidence interval)"}
-                            else if (input$expo_b == "OR p value"){name = "Odds ratio p value"}
-                            else if (input$expo_b == "beta p value"){name = "Beta p value"}
+                            else if (input$expo_b == "p value of the Odds Ratio"){name = "p value of the Odds Ratio"}
+                            else if (input$expo_b == "p value of the beta coefficient of the variable"){name = "p value of the beta coefficient of the variable"}
         )+
         scale_y_discrete('References',position="right")+
         #Give y-axis a meaningful label
         #ylab('Reference')+ 
         #Add a vertical dashed line indicating an effect size of zero, for reference
-        geom_vline(xintercept= if (input$expo_b == "Odds Ratio (OR)"|input$expo_b == "Prevalence Ratio (PR)"|input$expo_b == "OR p value") {1} else {0}, color='black', linetype='dashed')+
+        geom_vline(xintercept= if (input$expo_b == "Odds Ratio (OR)"|input$expo_b == "Prevalence Ratio (PR)"|input$expo_b == "p value of the odds ratio") {1} else {0}, color='black', linetype='dashed')+
         #Create sub-plots (i.e., facets) based on levels of setting
         #And allow them to have their own unique axes (so authors don't redundantly repeat)
         facet_grid(narrow ~., scales= 'free', space='free', switch="y")+
@@ -531,9 +813,9 @@ increases the potential for identification of false associations due to random e
         apatheme
     ),
     
-      width_svg = 21, height_svg = if(input$expo_b == "beta"){28} 
-    else if (input$expo_b == "Odds Ratio (OR)") {30}
-    else if (input$expo_b == "Prevalence Ratio (PR)") {30} else {15}
+    width_svg = 11, height_svg = if(input$expo_b == "beta coefficient of the variable"){28} 
+    else if (input$expo_b == "Odds Ratio (OR)") {25}
+    else if (input$expo_b == "Prevalence Ratio (PR)") {25} else {10}
     ,
     #width_svg = 12, height_svg = 12,
     options = list(
@@ -548,7 +830,7 @@ increases the potential for identification of false associations due to random e
     session$sendCustomMessage(type = 'plot_set', message = character(0))
   })
   
-  
+   
   
   
   
@@ -566,7 +848,7 @@ increases the potential for identification of false associations due to random e
     #out
     
     #newdata <- out[c(-1,-3, -4, -5,-6,-7,-15, -16, -17, -18)]
-    newdata <- out[c(9, 10, 11, 12, 13, 14,15, 16)]
+    newdata <- out[c(1, 10, 11, 12, 13, 14,15, 16, 17)]
     tablereac <- as.datatable(formattable(newdata,align = c("l", rep("c", NCOL(newdata) - 1)), list(
       #CPOE = color_tile("white", "green"),
       #VERBAL = color_tile("white", "red"),
@@ -678,6 +960,8 @@ increases the potential for identification of false associations due to random e
     
   })
   
+ 
+  
   #reactive table based on the selected row 
   tbl_reactive <- reactive({
     #t(input$filter(forest123, study == selected_state()))
@@ -733,4 +1017,59 @@ increases the potential for identification of false associations due to random e
       ylab("Proportion")
     ggplotly(gg)
   })
+  
+  output$bias_up <- renderPlotly({
+    #gg <- r22 %>% filter(Refid %in% selected_id()) %>% 
+    gg <- r22 %>% filter(Categorized.class==selected_class()) %>% 
+      ggplot(aes(x = `Type of Bias`, fill = Bias)) + 
+      geom_bar(position = "fill") + coord_flip() + 
+      scale_fill_manual(values = color_table$Color) + 
+      scale_x_discrete(labels = rev(c("Overall", "Confounding", "Measurement of Exposure", 
+                                      "Measurement of Outcome", "Measurement of Interventions","Missing Data", "Selection of Participants",
+                                      "Selection of Reported Result"))) +
+      ylab("Proportion")
+    ggplotly(gg)
+  })
+  
+  output$bias_ar <- renderPlotly({
+    #gg <- r22 %>% filter(Refid %in% selected_id()) %>% 
+    gg <- r22 %>% filter(Categorized.class==selected_class()) %>% 
+      ggplot(aes(x = `Type of Bias`, fill = Bias)) + 
+      geom_bar(position = "fill") + coord_flip() + 
+      scale_fill_manual(values = color_table$Color) + 
+      scale_x_discrete(labels = rev(c("Overall", "Confounding", "Measurement of Exposure", 
+                                      "Measurement of Outcome", "Measurement of Interventions","Missing Data", "Selection of Participants",
+                                      "Selection of Reported Result"))) +
+      ylab("Proportion")
+    ggplotly(gg)
+  })
+  
+  output$bias_gi <- renderPlotly({
+    #gg <- r22 %>% filter(Refid %in% selected_id()) %>% 
+    gg <- r22 %>% filter(Categorized.class==selected_class()) %>% 
+      ggplot(aes(x = `Type of Bias`, fill = Bias)) + 
+      geom_bar(position = "fill") + coord_flip() + 
+      scale_fill_manual(values = color_table$Color) + 
+      scale_x_discrete(labels = rev(c("Overall", "Confounding", "Measurement of Exposure", 
+                                      "Measurement of Outcome", "Measurement of Interventions","Missing Data", "Selection of Participants",
+                                      "Selection of Reported Result"))) +
+      ylab("Proportion")
+    ggplotly(gg)
+  })
+  
+  output$bias_Neur <- renderPlotly({
+    #gg <- r22 %>% filter(Refid %in% selected_id()) %>% 
+    gg <- r22 %>% filter(Categorized.class==selected_class()) %>% 
+      ggplot(aes(x = `Type of Bias`, fill = Bias)) + 
+      geom_bar(position = "fill") + coord_flip() + 
+      scale_fill_manual(values = color_table$Color) + 
+      scale_x_discrete(labels = rev(c("Overall", "Confounding", "Measurement of Exposure", 
+                                      "Measurement of Outcome", "Measurement of Interventions","Missing Data", "Selection of Participants",
+                                      "Selection of Reported Result"))) +
+      ylab("Proportion")
+    ggplotly(gg)
+  })
+  
 })
+
+

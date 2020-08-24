@@ -35,10 +35,17 @@ forest123 <- forest123 %>% mutate( Reference = paste(forest123$study, "(",forest
 forest$effect_z <- forest$mm
 forest$effect_z[forest$effect_z == 'OR'] <- 'Odds Ratio (OR)'
 forest$effect_z[forest$effect_z == 'PR'] <- 'Prevalence Ratio (PR)'
+forest$effect_z[forest$effect_z == 'beta'] <- 'beta coefficient of the variable'
+forest$effect_z[forest$effect_z == 'beta p value'] <- 'p value of the beta coefficient of the variable'
+forest$effect_z[forest$effect_z == 'OR p value'] <- 'p value of the Odds Ratio'
+#### change names to capital letters 
+forest$narrow[forest$narrow == 'aerosols'] <- 'Aerosols'
+forest$narrow[forest$narrow == 'distance'] <- 'Distance'
+forest$narrow[forest$narrow == 'other'] <- 'Other'
 
 forest$t_expo <- forest$Type_Exposure
-forest$t_expo[forest$t_expo == 'surrogate'] <- 'Indirect'
-
+forest$t_expo[forest$t_expo == 'surrogate'] <- 'Indirect measures of exposure'
+forest$t_expo[forest$t_expo == 'direct'] <- 'Direct measures of exposure'
 
 
 
