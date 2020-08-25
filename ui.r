@@ -324,7 +324,7 @@ effects."),
                       column(width = 5,
                              h4("Select a point: "),
                              #actionButton("reset", label = "Reset selection"),
-                             ggiraph::girafeOutput("plot",height="auto"),
+                             ggiraph::girafeOutput("plot_low",height="auto"),
                              #plotOutput("gg_forestp"),
                              #plotOutput("myplot"),
                              #DT::dataTableOutput("low_rsp_dt")#,
@@ -356,6 +356,222 @@ effects."),
               
       ),   
       
+      
+      tabItem(tabName = "up_rsp_forest",
+              fluidRow(
+                box(width = 12, solidHeader = T, status = "primary",
+                    title = "Forest Plot",
+                    p("Please select an effect size and a type of exposure from the drop-down menus below."),
+                    br(),
+                    fluidRow(
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_1_up")
+                             )),
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_2_up")
+                             )),
+                      infoBoxOutput("out12")
+                      
+                      
+                    ),
+                    
+                    hr(),
+                    fluidRow(
+                      column(width = 5,
+                             h4("Select a point: "),
+                             #actionButton("reset", label = "Reset selection"),
+                             ggiraph::girafeOutput("plot_up",height="auto"),
+                             
+                      ),
+                      tags$head(
+                        tags$style(type = "text/css",
+                                   HTML("th { text-align: center; }")
+                        )
+                      ),
+                      column(width = 7,
+                             
+                             h4("Selected outcome-exposure"),
+                             
+                             div(dataTableOutput("my_table_up"),style = "font-size: 65%; width: 40%;text-align: center",
+                             )
+                             
+                             
+                      )
+                    )                    
+                )
+                
+                
+                
+              )    
+              
+      ),  
+      
+      
+      tabItem(tabName = "ar_rsp_forest",
+              fluidRow(
+                box(width = 12, solidHeader = T, status = "primary",
+                    title = "Forest Plot",
+                    p("Please select an effect size and a type of exposure from the drop-down menus below."),
+                    br(),
+                    fluidRow(
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_1_ar")
+                             )),
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_2_ar")
+                             )),
+                      infoBoxOutput("out12_ar")
+                      
+                      
+                    ),
+                    
+                    hr(),
+                    fluidRow(
+                      column(width = 5,
+                             h4("Select a point: "),
+                             #actionButton("reset", label = "Reset selection"),
+                             ggiraph::girafeOutput("plot_ar",height="auto"),
+                             
+                      ),
+                      tags$head(
+                        tags$style(type = "text/css",
+                                   HTML("th { text-align: center; }")
+                        )
+                      ),
+                      column(width = 7,
+                             
+                             h4("Selected outcome-exposure"),
+                             
+                             div(dataTableOutput("my_table_ar"),style = "font-size: 65%; width: 40%;text-align: center",
+                             )
+                             
+                             
+                      )
+                    )                    
+                )
+                
+                
+                
+              )    
+              
+      ),  
+      
+      tabItem(tabName = "gi_rsp_forest",
+              fluidRow(
+                box(width = 12, solidHeader = T, status = "primary",
+                    title = "Forest Plot",
+                    p("Please select an effect size and a type of exposure from the drop-down menus below."),
+                    br(),
+                    fluidRow(
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_1_gi")
+                             )),
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_2_gi")
+                             )),
+                      infoBoxOutput("out12_gi")
+                      
+                      
+                    ),
+                    
+                    hr(),
+                    fluidRow(
+                      column(width = 5,
+                             h4("Select a point: "),
+                             #actionButton("reset", label = "Reset selection"),
+                             ggiraph::girafeOutput("plot_gi",height="auto"),
+                             
+                      ),
+                      tags$head(
+                        tags$style(type = "text/css",
+                                   HTML("th { text-align: center; }")
+                        )
+                      ),
+                      column(width = 7,
+                             
+                             h4("Selected outcome-exposure"),
+                             
+                             div(dataTableOutput("my_table_gi"),style = "font-size: 65%; width: 40%;text-align: center",
+                             )
+                             
+                             
+                      )
+                    )                    
+                )
+                
+                
+                
+              )    
+              
+      ),  
+      
+      
+      tabItem(tabName = "Neur_rsp_forest",
+              fluidRow(
+                box(width = 12, solidHeader = T, status = "primary",
+                    title = "Forest Plot",
+                    p("Please select an effect size and a type of exposure from the drop-down menus below."),
+                    br(),
+                    fluidRow(
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_1_Neur")
+                             )),
+                      
+                      column(width = 4,
+                             wellPanel(
+                               uiOutput("expo_var_2_Neur")
+                             )),
+                      infoBoxOutput("out12_Neur")
+                      
+                      
+                    ),
+                    
+                    hr(),
+                    fluidRow(
+                      column(width = 5,
+                             h4("Select a point: "),
+                             #actionButton("reset", label = "Reset selection"),
+                             ggiraph::girafeOutput("plot_Neur",height="auto"),
+                             
+                      ),
+                      tags$head(
+                        tags$style(type = "text/css",
+                                   HTML("th { text-align: center; }")
+                        )
+                      ),
+                      column(width = 7,
+                             
+                             h4("Selected outcome-exposure"),
+                             
+                             div(dataTableOutput("my_table_Neur"),style = "font-size: 65%; width: 40%;text-align: center",
+                             )
+                             
+                             
+                      )
+                    )                    
+                )
+                
+                
+                
+              )    
+              
+      ),
+ 
+    
      
       
       ## * risk of bias ####
