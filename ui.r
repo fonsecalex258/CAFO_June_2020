@@ -71,6 +71,7 @@ dashboardPage(
                   width = 12, solidHeader = TRUE, status = "primary",
                   title = "Living systematic review of effects of animal production on the health of surrounding communities",
                   fluidRow( column(width = 7, h4("What is a Living Systematic Review?"),
+                                   br(), 
                                    p("A living systematic reviews is a review that is frequently updated, incorporating relevant new evidence as it becomes available.
                   This term means that rather than being a static publication in a peer reviewed journal, 
                   the review is housed on this website allowing for more timely updates and more accessible information."),
@@ -130,6 +131,16 @@ dashboardPage(
               fluidRow(
                 box(width = 12, solidHeader = T, status = "primary",
                     title = "How to navigate through this website?",
+                    fluidRow(
+                      column(width = 12,h4("How to navigate the website?"),
+                             br(),
+                             HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/doMYhSZeVvs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                      )
+                    ),
+                    br(),
+                    hr(),
+                    fluidRow( column(width = 12, h4("How to use the forest plot graph?"),
+                                     br(),
                     p("The reported effect measures were either regression coefficients (βs) or prevalence ORs and prevalence ratios. In the forest plot (left side), 
                       each point represents the reported effect measure (e.g. an odds ratio) for a specific exposure-outcome relationship."),
                     p("The gray columns in the forest plot’s left side group the exposures in two categories. The second column from left to right indicates if the exposure evaluated involved direct contact with the individuals or it is surrogated. The first column from left to right groups the exposures according to type of exposure 
@@ -137,14 +148,14 @@ dashboardPage(
                     p(" The table on the right side shows the risk of bias assessment for the specific point selected previously on the forest plot. For further details about risk of bias assessment displayed in the table on the right side", a("click here", href = "https://www.bristol.ac.uk/population-health-sciences/centres/cresyda/barr/riskofbias/"), 
                       "Once you click on one a row, a table is going to pop-up to provide more details about the judgment made by the authors for that particular exposure-outcome relationship.  "),
                     p("The video below  provides more details about the usage of the forest plot and its annexes."),
+                    column(width = 12,
+                           br(),
+                           HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/BPUWWaVx0k0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                    )
+                    )),
                     br(),
-                    hr(),
-                    fluidRow(
-                      column(width = 8,h4("How to navigate the website?"),
-                             br(),
-                             HTML('<iframe width="560" height="315" src="https://youtu.be/doMYhSZeVvs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-                      )
-                    )))),
+                    hr()
+                    ))),
       
       ## about the studies ####
       tabItem(tabName = "eda",
@@ -577,15 +588,21 @@ effects."),
       ## * risk of bias ####
       tabItem(tabName = "low_rsp_risk_of_bias",
               fluidRow(
-                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Lower Respiratory Disease",
+                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Lower Respiratory Diseases",
                     p("Risk of Bias plot"),
-                    plotlyOutput("bias") %>% withSpinner()
-                )
-              )), 
+                    plotlyOutput("bias") %>% withSpinner(),
+                    br(),
+                    tags$li("The overall
+risk of bias was considered to be serious or critical for
+the studies that provided outcomes measured as regression coefficients."),
+                
+                tags$li("The overall risk of bias was serious for all of the studies
+that reported prevalence ORs as measures of association")
+              ))), 
       ## * risk of bias upper R
       tabItem(tabName = "up_rsp_risk_of_bias",
               fluidRow(
-                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Lower Respiratory Disease",
+                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Upper Respiratory Diseases",
                     p("Risk of Bias plot"),
                     plotlyOutput("bias_up") %>% withSpinner()
                 )
@@ -594,27 +611,31 @@ effects."),
       ## * risk of bias AR
       tabItem(tabName = "ar_rsp_risk_of_bias",
               fluidRow(
-                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Lower Respiratory Disease",
+                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Antimicrobial resistance outcomes",
                     p("Risk of Bias plot"),
-                    plotlyOutput("bias_ar") %>% withSpinner()
-                )
-              )), 
+                    plotlyOutput("bias_ar") %>% withSpinner(),
+                    br(),
+                    tags$li("The overall risk of bias was serious for all antimicrobial resistance outcomes reported by Schinasi et al. and moderate for
+the outcome reported by Feingold et al.")
+                ))), 
       ## * risk of bias upper GI
       tabItem(tabName = "gi_rsp_risk_of_bias",
               fluidRow(
-                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Lower Respiratory Disease",
+                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Gastrointestinal Diseases",
                     p("Risk of Bias plot"),
-                    plotlyOutput("bias_gi") %>% withSpinner()
-                )
-              )),
+                    plotlyOutput("bias_gi") %>% withSpinner(),
+                    br(),
+                    tags$li("There was an overall serious risk of bias associated with these objectively measured exposures. The associations with the subjectively measured exposures (hog odor) had an overall critical risk of bias due to the concerns previously discussed (relating to the CHEIHO study).")
+                ))), 
       ## * risk of bias Neurologic
       tabItem(tabName = "Neur_rsp_risk_of_bias",
               fluidRow(
-                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Lower Respiratory Disease",
+                box(width = 12, solidHeader = TRUE, status = "primary", title = "Risk of Bias for Neurologic conditions",
                     p("Risk of Bias plot"),
-                    plotlyOutput("bias_Neur") %>% withSpinner()
-                )
-              )),
+                    plotlyOutput("bias_Neur") %>% withSpinner(),
+                    br(),
+                    tags$li("The overall risk of bias for this exposure-outcome association was critical.")
+                ))), 
       
       
       

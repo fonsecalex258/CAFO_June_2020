@@ -1001,8 +1001,10 @@ increases the potential for identification of false associations due to random e
   })
   
   observeEvent(input$reset, {
-    session$sendCustomMessage(type = 'plot_set', message = character(0))
+    session$sendCustomMessage(type = 'plot_low', message = character(0))
   })
+  
+
   
   
   ##### For Upper R
