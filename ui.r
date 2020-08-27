@@ -592,6 +592,10 @@ effects."),
                     p("Risk of Bias plot"),
                     plotlyOutput("bias") %>% withSpinner(),
                     br(),
+                    
+                    tags$li("For further details about risk of bias assessment 
+                    displayed in the table on the right side", a("click here", href = "https://www.bristol.ac.uk/population-health-sciences/centres/cresyda/barr/riskofbias/")), 
+                    
                     tags$li("The overall
 risk of bias was considered to be serious or critical for
 the studies that provided outcomes measured as regression coefficients."),
