@@ -71,15 +71,15 @@ dashboardPage(
                   width = 12, solidHeader = TRUE, status = "primary",
                   title = "Living systematic review of effects of animal production on the health of surrounding communities",
                   fluidRow( column(width = 7, h4("What is a Living Systematic Review?"),
-                                   p("Systematic reviews that are continually updated, incorporating relevant new evidence as it becomes available.
+                                   p("A living systematic reviews is a review that is frequently updated, incorporating relevant new evidence as it becomes available.
                   This term means that rather than being a static publication in a peer reviewed journal, 
                   the review is housed on this website allowing for more timely updates and more accessible information."),
-                                   p("This process can be visualized in the next animation. Our last static systematic review about this topic was published in 2017 based on  16 relevant studies published before that year. 
-                    However, during the last 3 years, new studies may have been published and would need to be incorporated in  new systematic reviews. These new reviews are published on this website and updated periodically."),
-                                   
-                                   p("Through this website producers, public health officers, community leaders and community members can access
-                  the latest summary of the available studies and a balance interpretation of the findings and their implications
-                  in the wider body of literature will better serve the needs of the community because it"),
+                  #                  p("This process can be visualized in the this animation. Our last static systematic review about this topic was published in 2017 based on  16 relevant studies published before that year. 
+                  #   However, during the last 3 years, new studies may have been published and would need to be incorporated in  new systematic reviews. These new reviews are published on this website and updated periodically."),
+                  #                  
+                  #                  p("Through this website producers, public health officers, community leaders and community members can access
+                  # the latest summary of the available studies and a balance interpretation of the findings and their implications
+                  # in the wider body of literature will better serve the needs of the community because it"),
                                    p("1. Democratizes access to the information and interpretation, and"),
                                    p("2. Provides for more timely and relevant update"),
                                    
@@ -88,15 +88,15 @@ dashboardPage(
                   column(width = 5,div(img(src = "lsr1.gif", height = 320, width = 380), style="text-align: center;")
                   )),
                   hr(),
-                  
-                  fluidRow(column(width = 7, 
+                
+                  fluidRow(column(width = 7, h4("Community Health and Animal Facilities"),
                                   br(),                
-                                  p("In recent years there have been a growing concern about the harmful effects that animal facilities could have on nearby communities. 
+                                  p("In recent years there have been a growing concern about the effects that animal facilities could have on nearby communities. 
                   Regarding the swine industry, it has been suggested that facilities that confine animals indoors for feeding might represent a health
                   hazard for surrounding communities due to the exposition to odors, emissions and other harmful agents."),
                                   
                                   
-                                  p("The results showed in this website correspond to those published in our last systematic review published in 2017 approaching the association between human health issues and animal production. Given that additional studies have been , and continue to be, conducted to identify the relationship between proximity to livestock facilities and health outcomes in the surrounding communities our plan is create a living literature review of the research reports that study this association. Every time the living review is updated, the results will be displayed on this website so that the public will be able to access the latest summary of the available studies and a balance interpretation of the findings."),
+                                  p("The results showed in this website correspond to those published in our last systematic review published in 2017 approaching the association between human health issues and animal production. Given that additional studies have been, and continue to be, conducted to identify the relationship between proximity to livestock facilities and health outcomes in the surrounding communities our plan is create a living literature review of the research reports that study this association. Every time the living review is updated, the results will be displayed on this website so that the public will be able to access the latest summary of the available studies and a balance interpretation of the findings."),
                                   p("Currently, we are developing the protocol that will guide the second update of the systematic review and the implementation of the living systematic review."),
                                   #hr()
                   ),
@@ -104,7 +104,7 @@ dashboardPage(
                   br(),
                   column(width = 5,div(img(src = "cafo.jpg", height = 330, width = 380),align = "center"),
                   )),
-                  #p("In this sense we had performed two systematic review summarizing the findings of publications approaching this matter.
+                  #p("In this sense we have performed two systematic reviews summarizing the findings of publications investigating this topic.
                   #These previous studies can be consulted by clicking on the following links:"),
                   #p("1.", a("First Systematic Review", href = "https://systematicreviewsjournal.biomedcentral.com/articles/10.1186/s13643-017-0465-z")),
                   #p("2.", a("Second Systematic Review", href = "https://systematicreviewsjournal.biomedcentral.com/articles/10.1186/s13643-017-0465-z")),
@@ -113,8 +113,8 @@ dashboardPage(
                   
                   
                   column(width = 12,h4("Our Previous Systematic Reviews"),
-                         p("We had performed two systematic review summarizing the findings of publications approaching this matter.
-                  These previous studies can be consulted by clicking on the following links:"),
+                         p("We had performed two systematic review summarizing the findings of publications investigating this topic.
+                  These previous systematic review can be consulted by clicking on the following links:"),
                          p("1.", a("First Systematic Review", href = "https://journals.plos.org/plosone/article/authors?id=10.1371/journal.pone.0009530")),
                          p("2.", a("Second Systematic Review (First Update)", href = "https://systematicreviewsjournal.biomedcentral.com/articles/10.1186/s13643-017-0465-z")),       
                          p("Our last review (First Update) was published in 2017 and its objective was to update a systematic review of associations
@@ -140,9 +140,9 @@ dashboardPage(
                     br(),
                     hr(),
                     fluidRow(
-                      column(width = 8,h4("How to use the forest plot??"),
+                      column(width = 8,h4("How to navigate the website?"),
                              br(),
-                             HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/OisGY9XVI-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+                             HTML('<iframe width="560" height="315" src="https://youtu.be/doMYhSZeVvs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
                       )
                     )))),
       
